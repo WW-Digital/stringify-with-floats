@@ -1,7 +1,7 @@
 {
   "name": "stringify-with-floats",
   "version": "1.0.0",
-  "description": "An extended JSON.stringify with the ability to force decimal precision.",
+  "description": "An extended JSON.stringify with the ability to force float data type.",
   "main": "build/index.js",
   "scripts": {
     "build": "babel src --out-dir build --presets env --plugins add-module-exports",

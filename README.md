@@ -1,6 +1,6 @@
 # stringify-with-floats
 
-An extended JSON.stringify with the ability to force decimal precision.
+An extended JSON.stringify with the ability to force float data type.
 
 [![Build Status](https://travis-ci.com/WW-Digital/stringify-with-floats.svg?token=JdTX7m9qKHidphGrDKfA&branch=master)](https://travis-ci.com/WW-Digital/stringify-with-floats)
 

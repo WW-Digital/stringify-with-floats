@@ -40,6 +40,10 @@ stringify( value [, replacer [, space ]] )
   stringify(value) // {"a":1,"b":{"c":1.0,"d":1.2}}
 ```
 
+## Known issues
+
+- Inability to distinguish between `obj.a` and `obj.nested.a` ([#3](https://github.com/WW-Digital/stringify-with-floats/issues/3))
+
 ## License
 
 MIT

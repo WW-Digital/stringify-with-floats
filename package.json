@@ -1,0 +1,32 @@
+{
+  "name": "stringify-with-floats",
+  "version": "1.0.0",
+  "description": "An extended JSON.stringify with the ability to force float data type.",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "babel src --out-dir build --presets env --plugins add-module-exports",
+    "test": "npm run build && ava test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WW-Digital/stringify-with-floats.git"
+  },
+  "keywords": [
+    "json",
+    "stringify",
+    "float",
+    "decimal"
+  ],
+  "author": "will123195",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WW-Digital/stringify-with-floats/issues"
+  },
+  "homepage": "https://github.com/WW-Digital/stringify-with-floats#readme",
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}

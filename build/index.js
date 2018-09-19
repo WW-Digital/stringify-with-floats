@@ -9,16 +9,18 @@ var endFloat = '~end~float~';
 var StringifyWithFloats = function StringifyWithFloats() {
   var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return function (inputValue, inputReplacer, space) {
+    var inputReplacerIsFunction = typeof inputReplacer === 'function';
     var isFirstIteration = true;
     var jsonReplacer = function jsonReplacer(key, val) {
       if (isFirstIteration) {
         isFirstIteration = false;
-        return typeof inputReplacer === 'function' ? inputReplacer(key, val) : val;
+        return inputReplacerIsFunction ? inputReplacer(key, val) : val;
       }
       var value = void 0;
-      if (typeof inputReplacer === 'function') {
+      if (inputReplacerIsFunction) {
         value = inputReplacer(key, val);
       } else if (Array.isArray(inputReplacer)) {
+        // remove the property if it is not included in the inputReplacer array
         value = inputReplacer.indexOf(key) !== -1 ? val : undefined;
       } else {
         value = val;

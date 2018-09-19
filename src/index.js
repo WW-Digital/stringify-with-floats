@@ -2,16 +2,18 @@ const beginFloat = '~begin~float~';
 const endFloat = '~end~float~';
 
 const StringifyWithFloats = (config = {}) => (inputValue, inputReplacer, space) => {
+  const inputReplacerIsFunction = (typeof inputReplacer === 'function');
   let isFirstIteration = true;
   const jsonReplacer = (key, val) => {
     if (isFirstIteration) {
       isFirstIteration = false;
-      return (typeof inputReplacer === 'function') ? inputReplacer(key, val) : val;
+      return inputReplacerIsFunction ? inputReplacer(key, val) : val;
     }
     let value;
-    if (typeof inputReplacer === 'function') {
+    if (inputReplacerIsFunction) {
       value = inputReplacer(key, val);
     } else if (Array.isArray(inputReplacer)) {
+      // remove the property if it is not included in the inputReplacer array
       value = (inputReplacer.indexOf(key) !== -1) ? val : undefined;
     } else {
       value = val;

@@ -39,6 +39,41 @@ test('StringifyWithFloats should work', function (t) {
   t.is(actual, expected);
 });
 
+test('stringify with replacer function', function (t) {
+  var value = {
+    a: 1,
+    b: 2
+  };
+  var replacer = function (key, val) {
+    if (key === 'b') return undefined;
+    return val;
+  };
+  var actual = StringifyWithFloats({ a: 'float' })(value, replacer);
+  var expected = '{"a":1.0}';
+  t.is(actual, expected);
+});
+
+test('stringify with replacer array', function (t) {
+  var value = {
+    a: 1,
+    b: 2
+  };
+  var replacer = ['a'];
+  var actual = StringifyWithFloats({ a: 'float' })(value, replacer);
+  var expected = '{"a":1.0}';
+  t.is(actual, expected);
+});
+
+test('stringify with space', function (t) {
+  var value = {
+    a: 1,
+    b: 2
+  };
+  var actual = StringifyWithFloats({ a: 'float' })(value, null, ' ');
+  var expected = '{\n "a": 1.0,\n "b": 2\n}';
+  t.is(actual, expected);
+});
+
 test('stringify number with no schema', function (t) {
   var value = 1;
   var actual = StringifyWithFloats()(value);

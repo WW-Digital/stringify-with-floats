@@ -1,8 +1,8 @@
 # stringify-with-floats
 
-An extended JSON.stringify with the ability to force float data type.
+An extended JSON.stringify with the ability to force float data type
 
-[![Build Status](https://travis-ci.com/WW-Digital/stringify-with-floats.svg?token=JdTX7m9qKHidphGrDKfA&branch=master)](https://travis-ci.com/WW-Digital/stringify-with-floats)
+[![Build Status](https://travis-ci.com/WW-Digital/stringify-with-floats.svg?branch=master)](https://travis-ci.com/WW-Digital/stringify-with-floats)
 
 ## Install
 
@@ -12,28 +12,32 @@ npm i stringify-with-floats
 
 ## Usage
 
+```js
+const stringify = StringifyWithFloats( schema )
 ```
-StringifyWithFloats( schema [, space] )( value )
-```
+
 - `schema` {Object} the property names that need data type coercion 
-- `space` {Number|String} see [JSON.stringify documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_space_argument)
+
+```
+stringify( value [, replacer [, space ]] )
+```
+
 - `value` The value to convert to a JSON string
+- `replacer` {Function} see [JSON.stringify documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter)
+- `space` {Number|String} see [JSON.stringify documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_space_argument)
 
 ## Example
 
 ```js
-  const schema = {
-    c: 'float'
-  }
   const value = {
     a: 1,
     b: {
       c: 1.0, // regular JSON.stringify drops the decimal... but we want to keep it!
       d: 1.20
     }
-  };
-  StringifyWithFloats(schema)(value);
-  // {"a":1,"b":{"c":1.0,"d":1.2}}
+  }
+  const stringify = StringifyWithFloats({ c: 'float' })
+  stringify(value) // {"a":1,"b":{"c":1.0,"d":1.2}}
 ```
 
 ## License

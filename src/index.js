@@ -12,7 +12,7 @@ const StringifyWithFloats = (config = {}) => (inputValue, inputReplacer, space) 
     if (typeof inputReplacer === 'function') {
       value = inputReplacer(key, val);
     } else if (Array.isArray(inputReplacer)) {
-      value = inputReplacer.includes(key) ? val : undefined;
+      value = (inputReplacer.indexOf(key) !== -1) ? val : undefined;
     } else {
       value = val;
     }

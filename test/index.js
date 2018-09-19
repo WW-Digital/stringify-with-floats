@@ -50,3 +50,13 @@ test('stringify array with no schema', function (t) {
   var expected = '[1,1.2]';
   t.is(actual, expected);
 });
+
+test('stringify date', function (t) {
+  var value = {
+    a: .10,
+    b: new Date(1)
+  };
+  var actual = StringifyWithFloats()(value);
+  var expected = '{"a":0.1,"b":"1970-01-01T00:00:00.001Z"}';
+  t.is(actual, expected);
+});

@@ -11,7 +11,6 @@ test('StringifyWithFloats should work', function (t) {
     f: 'float',
     g: 'float',
     h: 'float',
-    i: 'float'
   });
   var actual = stringify({
     a: 1,
@@ -31,9 +30,11 @@ test('StringifyWithFloats should work', function (t) {
       },
       k: 2.3,
       l: '1'
-    }
+    },
+    m: '1.0',
+    n: 1.0003
   });
-  var expected = '{"a":1.0,"b":1.2,"c":-1.0,"d":-1.2,"e":{"f":"","g":null,"h":0.0,"i":"x","j":{"a":2.0,"b":true,"c":false,"d":[5,6]},"k":2.3,"l":"1"}}';
+  var expected = '{"a":1.0,"b":1.2,"c":-1.0,"d":-1.2,"e":{"f":"","g":null,"h":0.0,"i":"x","j":{"a":2.0,"b":true,"c":false,"d":[5,6]},"k":2.3,"l":"1"},"m":"1.0","n":1.0003}';
   t.is(actual, expected);
 });
 

@@ -23,7 +23,7 @@ stringify( value [, replacer [, space ]] )
 ```
 
 - `value` The value to convert to a JSON string
-- `replacer` {Function} see [JSON.stringify documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter)
+- `replacer` {Function|Array} see [JSON.stringify documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter)
 - `space` {Number|String} see [JSON.stringify documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_space_argument)
 
 ## Example

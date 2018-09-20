@@ -1,14 +1,29 @@
 const beginFloat = '~begin~float~';
 const endFloat = '~end~float~';
 
-const StringifyWithFloats = (config = {}) => (value, options) => {
-  const jsonReplacer = (key, value) => {
-    const shouldBeReplaced = config[key] === 'float'
+const StringifyWithFloats = (config = {}) => (inputValue, inputReplacer, space) => {
+  const inputReplacerIsFunction = (typeof inputReplacer === 'function');
+  let isFirstIteration = true;
+  const jsonReplacer = (key, val) => {
+    if (isFirstIteration) {
+      isFirstIteration = false;
+      return inputReplacerIsFunction ? inputReplacer(key, val) : val;
+    }
+    let value;
+    if (inputReplacerIsFunction) {
+      value = inputReplacer(key, val);
+    } else if (Array.isArray(inputReplacer)) {
+      // remove the property if it is not included in the inputReplacer array
+      value = (inputReplacer.indexOf(key) !== -1) ? val : undefined;
+    } else {
+      value = val;
+    }
+    const forceFloat = config[key] === 'float'
       && (value || value === 0)
       && typeof value === 'number';
-    return shouldBeReplaced ? `${beginFloat}${value}${endFloat}` : value;
+    return forceFloat ? `${beginFloat}${value}${endFloat}` : value;
   };
-  const json = JSON.stringify(value, jsonReplacer, options);
+  const json = JSON.stringify(inputValue, jsonReplacer, space);
   const regexReplacer = (match, num) => {
     return (num.includes('.') || Number.isNaN(num)) ? num : `${num}.0`;
   };

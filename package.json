@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "An extended JSON.stringify with the ability to force float data type.",
   "main": "build/index.js",
+  "module": "src/index.js",
   "scripts": {
     "build": "babel src --out-dir build --presets env --plugins add-module-exports",
     "test": "npm run build && ava test"

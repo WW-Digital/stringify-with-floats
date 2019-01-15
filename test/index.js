@@ -100,10 +100,12 @@ test('stringify date', function (t) {
 
 test('stringify exponential notation', function (t) {
   var value = {
-    a: 4e-8,
-    b: 5e-7
+    a1: 4E-8,
+    a2: 4e-8,
+    b1: 5E-7,
+    b2: 5e-7
   };
-  var actual = StringifyWithFloats({ b: 'float' })(value);
-  var expected = '{"a":4e-8,"b":5e-7}';
+  var actual = StringifyWithFloats({ b1: 'float', b2: 'float' })(value);
+  var expected = '{"a1":4e-8,"a2":4e-8,"b1":5e-7,"b2":5e-7}';
   t.is(actual, expected);
 });

@@ -25,7 +25,7 @@ var StringifyWithFloats = function StringifyWithFloats() {
       } else {
         value = val;
       }
-      var forceFloat = config[key] === 'float' && (value || value === 0) && typeof value === 'number' && !value.toString().includes('e');
+      var forceFloat = config[key] === 'float' && (value || value === 0) && typeof value === 'number' && !value.toString().toLowerCase().includes('e');
       return forceFloat ? '' + beginFloat + value + endFloat : value;
     };
     var json = JSON.stringify(inputValue, jsonReplacer, space);

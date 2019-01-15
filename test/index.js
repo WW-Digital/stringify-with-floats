@@ -97,3 +97,15 @@ test('stringify date', function (t) {
   var expected = '{"a":0.1,"b":"1970-01-01T00:00:00.001Z"}';
   t.is(actual, expected);
 });
+
+test('stringify exponential notation', function (t) {
+  var value = {
+    a1: 4E-8,
+    a2: 4e-8,
+    b1: 5E-7,
+    b2: 5e-7
+  };
+  var actual = StringifyWithFloats({ b1: 'float', b2: 'float' })(value);
+  var expected = '{"a1":4e-8,"a2":4e-8,"b1":5e-7,"b2":5e-7}';
+  t.is(actual, expected);
+});

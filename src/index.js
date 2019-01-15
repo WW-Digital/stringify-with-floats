@@ -20,7 +20,8 @@ const StringifyWithFloats = (config = {}) => (inputValue, inputReplacer, space) 
     }
     const forceFloat = config[key] === 'float'
       && (value || value === 0)
-      && typeof value === 'number';
+      && typeof value === 'number'
+      && !value.toString().toLowerCase().includes('e');
     return forceFloat ? `${beginFloat}${value}${endFloat}` : value;
   };
   const json = JSON.stringify(inputValue, jsonReplacer, space);
